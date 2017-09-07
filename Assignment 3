@@ -1,0 +1,35 @@
+# In Class Assignment from Class 4 - R Functions code given by Ram sir 
+
+#Assignment 3
+
+# Create a dataset of Custs
+#                    ID as distinct numerical values
+#                    Income is normal distribution M: 250,000 and SD:75000
+#                    Gender 60% are Male in the sample (Hint runif and ifelse)
+
+#Start
+
+# Income is Normal distribution
+normal_income <- rnorm (10, mean=250000, sd= 75000)
+View(normal_income)
+mean(normal_income)
+
+# Creating ID as distinct numerical values
+cust.id<- c(1:100)
+income <- rnorm(cust.id, mean = 250000, sd= 75000)
+View(income)
+sd(income)
+
+#repeat function is used to repeat the same values in a vector
+gender<-c(rep("F",100))
+j<-sample(1:100,100,replace=FALSE) #It will create 100 integers but not unique if we don't write FALSE
+
+#FOR LoOP- if you have to repeat a condition until the result is met
+
+for(q in 1:100)
+  if(gender[j[q]]=="F"&& q<=40){}
+  else{
+    gender[j[q]<-c("M")]
+  }
+  
+  #End
