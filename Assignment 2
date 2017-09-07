@@ -1,0 +1,57 @@
+# In Class Assignment from Class 3 - Reading and Writing Data code given by Ram sir 
+
+#Assignment 2 
+
+
+# Q(1):  Download a csv file from https://data.oecd.org/healthstat/infant-mortality-rates.htm and read the csv file
+# And remove the last variable 
+
+#Start
+
+#Reading the csv file 
+
+Infant_mortality_rates <- read.csv("G://THE MICA EPISODE//2nd YEAR//AMMA//Hands on Exercises//Infant mortality rates.csv")
+
+#Removing the last variable 
+
+Infant_mortality_rates$`Flag Codes`<- NULL
+
+View(Infant_mortality_rates)
+
+#Question 1 Ends 
+
+# Q(2): Read 2 table from html page https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry
+# Find number of ODI Matches won by India
+
+#Installing required packages
+
+install.packages("rvest")
+library("rvest")
+install.packages("xml2")
+library("xml2")
+
+#Getting data from the web
+
+matches_link="https://en.wikipedia.org/wiki/India%E2%80%93Pakistan_cricket_rivalry"
+matches_file= read_html(matches_link)
+matches_table=html_nodes(matches_file,"table")
+
+#Invoke the 2nd table
+
+matches_table_final<-html_table(matches_table[2], fill= TRUE)
+View(matches_table_final)
+matches_data=as.data.frame(matches_table_final)
+View(matches_data)
+
+#Calculating the total wins
+
+matches_data$total_wins=matches_data$Test+matches_data$ODI+matches_data$T20I
+
+#Calculating the wins by India 
+
+India_wins<-matches_data[3,5]
+View(India_wins)
+
+#Question 2 Ends
+
+#Assignment 2 Ends 
